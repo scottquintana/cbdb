@@ -24,7 +24,7 @@ class Api::V1::BeansController < ApplicationController
   end
 
   def destroy
-    @todo.destroy
+    @bean.destroy
     head :no_content
   end
 
@@ -32,7 +32,7 @@ class Api::V1::BeansController < ApplicationController
   private
 
   def bean_params
-    params.permit(:name, :roaster_id)
+    params.permit(:name, :roaster_id, :active)
   end
 
   def set_bean

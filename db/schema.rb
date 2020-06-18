@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_163001) do
+ActiveRecord::Schema.define(version: 2020_06_17_194852) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -47,6 +47,18 @@ ActiveRecord::Schema.define(version: 2020_06_10_163001) do
     t.index ["roaster_id"], name: "index_beans_on_roaster_id"
   end
 
+  create_table "roaster_contacts", force: :cascade do |t|
+    t.integer "roaster_id", null: false
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "country"
+    t.string "website"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["roaster_id"], name: "index_roaster_contacts_on_roaster_id"
+  end
+
   create_table "roasters", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -73,4 +85,5 @@ ActiveRecord::Schema.define(version: 2020_06_10_163001) do
   end
 
   add_foreign_key "beans", "roasters"
+  add_foreign_key "roaster_contacts", "roasters"
 end
