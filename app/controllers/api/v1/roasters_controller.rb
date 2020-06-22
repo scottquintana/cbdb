@@ -4,14 +4,15 @@ class Api::V1::RoastersController < ApplicationController
 
   before_action :set_roaster, only: [:show, :update, :destroy]
   def index
-    @roasters = Roaster.all.order(:roaster_name)
-    @roasters_beans = Bean.all
-    render json: @roasters, include: :beans, status: :ok
+    @roasters = Roaster.includes(:beans, :roaster_contact)
+   
+    thejson = RoasterSerializer.new(@roasters).serialized_json
+    render json: thejson, status: :ok
   end
 
   def show
     #json_response(@roaster)
-    render json: @roaster, include: :beans, status: :ok
+    render json: RoasterSerializer.new(@roaster), status: :ok
   end
 
   def create
