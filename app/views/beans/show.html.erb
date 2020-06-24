@@ -1,0 +1,19 @@
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= @bean.name %><small> [<%= @bean.status %>]</small></h5>
+    
+    <p class="card-text">
+    <%= @bean.bean_profile.description %>
+    </p>
+    <li><%= @bean.bean_profile.region %>
+    <li><%= @bean.bean_profile.altitude %>
+    <li><%= @bean.bean_profile.processing %>
+    <li><%= @bean.bean_profile.notes %>
+    <li><%= @bean.bean_profile.roast_level %>
+    <li><%= @bean.bean_profile.altitude %>
+    
+    <%= link_to 'Edit', edit_bean_path(@bean) %>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>

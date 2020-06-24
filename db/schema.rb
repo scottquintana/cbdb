@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_17_194852) do
+ActiveRecord::Schema.define(version: 2020_06_23_170949) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -38,12 +38,26 @@ ActiveRecord::Schema.define(version: 2020_06_17_194852) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "bean_profiles", force: :cascade do |t|
+    t.integer "bean_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "region"
+    t.string "processing"
+    t.string "notes"
+    t.string "altitude"
+    t.integer "roast_level"
+    t.boolean "single_origin"
+    t.string "description"
+    t.index ["bean_id"], name: "index_bean_profiles_on_bean_id"
+  end
+
   create_table "beans", force: :cascade do |t|
     t.string "name"
-    t.boolean "active", default: true
     t.integer "roaster_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status"
     t.index ["roaster_id"], name: "index_beans_on_roaster_id"
   end
 
@@ -84,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_06_17_194852) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bean_profiles", "beans"
   add_foreign_key "beans", "roasters"
   add_foreign_key "roaster_contacts", "roasters"
 end

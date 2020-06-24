@@ -1,0 +1,28 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Bean</th>
+      <th scope="col">Date Added</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @roaster.beans.each.with_index(1) do |bean, i| %>
+    
+    <tr>
+      <th scope="row"><%= "#{i}" %></th>
+      <td><%= link_to bean.name, bean_path(bean) %></td>
+      <td><%= bean.created_at.strftime('%F') %></td>
+      <td><%= bean.status %></td>
+      <td>
+        <%= link_to 'Edit', edit_bean_path(bean) %> | <%= link_to 'Remove' %>
+
+
+      </td>
+    </tr>
+    <% end %>
+    
+  </tbody>
+</table>

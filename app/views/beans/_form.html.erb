@@ -1,0 +1,69 @@
+<%= form_with(model: @bean, local: true) do |form| %>
+<%
+=begin%>
+<% if bean.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(bean.errors.count, "error") %> prohibited this bean from being saved:</h2>
+
+  <ul>
+    <% bean.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<%
+=end%>
+
+<div class="form-group">
+  <%= form.label :name %>
+  <%= form.text_field :name, class: "form-control" %>
+</div>
+<%= form.fields_for :bean_profile do |ff| %>
+<div class="form-group">
+  <%= ff.label :description %>
+  <%= ff.text_field :description, class: "form-control" %>
+</div>
+
+<div class="form-check form-check-inline">
+  <%= ff.radio_button :single_origin, true, class: "form-check-input" %><%= ff.label 'Single Origin', class: "form-check-label" %>
+</div>
+<div class="form-check form-check-inline">
+  <%= ff.radio_button :single_origin, false, class: "form-check-input" %><%= ff.label 'Blend', class: "form-check-label" %>
+</div>
+<div class="form-group">
+  <%= ff.label :region %>
+  <%= ff.text_field :region, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= ff.label :processing %>
+  <%= ff.text_field :processing, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= ff.label :notes %>
+  <%= ff.text_field :notes, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= ff.label :altitude %>
+  <%= ff.text_field :altitude, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= ff.label :roast_level %>
+  <%= ff.select :roast_level, options_for_select(1..10, selected: @bean.bean_profile.roast_level || nil), { prompt: "1-Lightest, 10-Darkest" } %>
+</div>
+<% end %>
+<div class="form-group">
+  <%= form.label 'Actively roasting?' %>
+  <%= form.select :status, [['Active', 'active'], ['Inactive', '1']], class: "form-control" %>
+</div>
+
+
+
+
+<div class="form-group">
+  <%= form.submit class: "btn btn-primary" %>
+</div>
+<% end %>

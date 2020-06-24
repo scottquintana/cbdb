@@ -1,0 +1,10 @@
+
+
+<h1> Hello, <%= @roaster.roaster_name %></h1><br>
+<div class="container">
+  <%= render 'beans' %>
+  </div>
+  <div>
+    <%= link_to 'Sign out', destroy_roaster_session_path, method: :delete %>
+  </div>
+

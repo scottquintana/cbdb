@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cbdb</title>
+    <title>CBDB</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,12 @@
   </head>
 
   <body>
+    <div id="page-content">
+    <% if current_roaster %>
+    <%= render 'layouts/navbar' %>
+    <% end %>
     <%= yield %>
+
+  </div>  
   </body>
 </html>
