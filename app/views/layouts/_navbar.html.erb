@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar  sticky-top navbar-dark bg-dark">
-  <%= link_to 'CBDB', roasters_path, class: "navbar-brand" %>
+ 
+<%= image_tag "bean-logo.png", width: "30", height: "30" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,7 +27,7 @@
           Profile
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to 'View Profile', roaster_path(@roaster), class: "dropdown-item" %>
+          <%= link_to 'View Profile', roasters_path, class: "dropdown-item" %>
           <%= link_to 'Edit', edit_roaster_registration_path, class: "dropdown-item" %>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>

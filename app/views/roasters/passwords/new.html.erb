@@ -1,16 +1,30 @@
-<h2>Forgot your password?</h2>
+ <div class="view" style="background-image: url('/assets/bean_background.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+   <div class="col-md-4 mx-auto">
+     <br><br><br>
+     <div class="card">
+       <div class="card-body">
+         <div class="text-center">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+           <%= image_tag "bean_logo.png", height:"100", width: "100" %>
+           <h3 class="text-white">Forgot your password?</h3>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+           <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+           <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "roasters/shared/links" %>
+           <div class="md-form">
+             <%= f.label :email %><br />
+             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-sm" %>
+           </div>
+          <br>
+           <div class="md-form">
+             <%= f.submit "Send me reset password instructions", class: "btn btn-outline-light" %>
+           </div>
+           <% end %>
+          <br>
+           <%= render "roasters/shared/links" %>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ 
