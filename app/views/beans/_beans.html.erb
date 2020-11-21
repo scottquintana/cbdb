@@ -1,3 +1,4 @@
+
 <table width=50 class="table table-striped">
   <thead class="thead-dark">
     <tr>
@@ -15,9 +16,18 @@
       <th scope="row"><%= "#{i}" %></th>
       <td><%= link_to bean.name, bean_path(bean) %></td>
       <td><%= bean.created_at.strftime('%F') %></td>
-      <td><%= bean.status %></td>
       <td>
-        <%= link_to 'Edit', edit_bean_path(bean) %> | <%= link_to 'Remove' %>
+      <% if bean.status == 'active' %>
+        <span class="badge badge-success">
+        <% elsif bean.status == 'inactive' %>
+        <span class="badge badge-secondary">
+        <% elsif bean.status == 'pending' %>
+        <span class="badge badge-warning">
+        <% end %>
+      <%= bean.status %></td>
+      </span>
+      <td>
+        <%= link_to 'Edit', edit_bean_path(bean) %> | <%= link_to 'Remove', bean_path(bean), method: :delete, data: { confirm: "Are you sure?" } %>
 
 
       </td>

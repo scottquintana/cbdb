@@ -16,6 +16,17 @@ port        ENV.fetch("PORT") { 3000 }
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
 
+if ENV['RACK_ENV'] == 'development'
+  localhost_key = "#{File.join('config', 'local-certs', 'localhost-key.pem')}"
+  localhost_crt = "#{File.join('config', 'local-certs', 'localhost.pem')}"
+  # To be able to use rake etc
+  ssl_bind '0.0.0.0', 3000, {
+    key: localhost_key,
+    cert: localhost_crt,
+    verify_mode: 'none'
+  }
+end
+
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 

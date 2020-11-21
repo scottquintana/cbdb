@@ -1,4 +1,5 @@
 class RoastersController < ApplicationController
+  before_action :authenticate_roaster!
   before_action :set_roaster
   
   def index

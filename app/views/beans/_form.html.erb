@@ -14,56 +14,64 @@
 <% end %>
 <%
 =end%>
-
-<div class="form-group">
-  <%= form.label :name %>
-  <%= form.text_field :name, class: "form-control" %>
-</div>
-<%= form.fields_for :bean_profile do |ff| %>
-<div class="form-group">
-  <%= ff.label :description %>
-  <%= ff.text_field :description, class: "form-control" %>
-</div>
-
-<div class="form-check form-check-inline">
-  <%= ff.radio_button :single_origin, true, class: "form-check-input" %><%= ff.label 'Single Origin', class: "form-check-label" %>
-</div>
-<div class="form-check form-check-inline">
-  <%= ff.radio_button :single_origin, false, class: "form-check-input" %><%= ff.label 'Blend', class: "form-check-label" %>
-</div>
-<div class="form-group">
-  <%= ff.label :region %>
-  <%= ff.text_field :region, class: "form-control" %>
+<div class="form-row">
+  <div class="md-form  col-md-6">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+  <%= form.fields_for :bean_profile do |ff| %>
+  <div class="md-form col-md-6">
+    <%= ff.label :description %>
+    <%= ff.text_field :description, class: "form-control" %>
+  </div>
 </div>
 
-<div class="form-group">
-  <%= ff.label :processing %>
-  <%= ff.text_field :processing, class: "form-control" %>
+  <div class="md-form form-check form-check-inline">
+
+    <%= ff.radio_button :single_origin, true, class: "form-check-input" %><%= ff.label 'Single Origin', class: "form-check-label" %>
+  </div>
+  <div class="md-form form-check form-check-inline">
+    <%= ff.radio_button :single_origin, false, class: "form-check-input" %><%= ff.label 'Blend', class: "form-check-label" %>
+  </div>
+
+<div class="form-row">
+  <div class="md-form col-md-6">
+    <%= ff.label :region %>
+    <%= ff.text_field :region, class: "form-control" %>
+  </div>
+
+  <div class="md-form col-md-6">
+    <%= ff.label :processing %>
+    <%= ff.text_field :processing, class: "form-control" %>
+  </div>
 </div>
+<div class="form-row">
+  <div class="md-form col-md-6">
+    <%= ff.label :notes %>
+    <%= ff.text_field :notes, class: "form-control" %>
+  </div>
 
-<div class="form-group">
-  <%= ff.label :notes %>
-  <%= ff.text_field :notes, class: "form-control" %>
+  <div class="md-form col-md-6">
+    <%= ff.label :altitude %>
+    <%= ff.text_field :altitude, class: "form-control" %>
+  </div>
 </div>
+<div class="form-row">
+  <div class="md-form col-md-6">
+    <%= ff.label :roast_level %>
+    <%= ff.select :roast_level, options_for_select(1..10, selected: @bean.bean_profile.roast_level || nil), { prompt: "1-Lightest, 10-Darkest" }, class: "form-control" %>
+  </div>
 
-<div class="form-group">
-  <%= ff.label :altitude %>
-  <%= ff.text_field :altitude, class: "form-control" %>
+  <% end %>
+  <div class="md-form col-md-6">
+    <%= form.label 'Actively roasting?' %>
+    <%= form.select :status, options_for_select([['Active', 'active'], ['Inactive', 'inactive']], selected: @bean.status), { prompt: "1-Lightest, 10-Darkest" }, class: "form-control" %>
+  </div>
 </div>
-<div class="form-group">
-  <%= ff.label :roast_level %>
-  <%= ff.select :roast_level, options_for_select(1..10, selected: @bean.bean_profile.roast_level || nil), { prompt: "1-Lightest, 10-Darkest" } %>
-</div>
-<% end %>
-<div class="form-group">
-  <%= form.label 'Actively roasting?' %>
-  <%= form.select :status, [['Active', 'active'], ['Inactive', '1']], class: "form-control" %>
-</div>
-
-
+<br>
 
 
 <div class="form-group">
-  <%= form.submit class: "btn btn-primary" %>
+  <%= form.submit class: "btn btn-outline-light" %>
 </div>
 <% end %>

@@ -15,6 +15,7 @@ gem 'fast_jsonapi'
 gem 'rubocop'
 gem 'solargraph'
 gem 'country_select', '~> 4.0'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker

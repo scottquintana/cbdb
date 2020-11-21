@@ -12,7 +12,9 @@ class Api::V1::RoastersController < ApplicationController
 
   def show
     #json_response(@roaster)
-    render json: RoasterSerializer.new(@roaster), status: :ok
+    serializer = RoasterSerializer.new(@roaster, fields: { roaster: [:roaster_name]})
+
+    render json: serializer.serializable_hash, status: :ok
   end
 
   def create

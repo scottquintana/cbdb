@@ -1,7 +1,19 @@
-<h1>Editing Bean</h1>
-<div class="container">
-<%= render 'form' %>
+<div class="view" style="background-image: url('/assets/bean_background.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+  <div class="col-md-8 mx-auto">
+    <br><br><br>
+    <div class="card">
+      <div class="card-body">
+        <div class="text-center">
 
-<%= link_to 'Show', @bean %> |
-<%= link_to 'Back', beans_path %>
+          <%= image_tag "bean-logo-sm.png", height:"100", width: "100" %>
+          <h3 class="text-white">
+            Edit Bean</h3>
+          <hr class="hr-light">
+        </div>
+
+        <%= render 'form' %><%= link_to 'Show', @bean, class: "text-muted" %> | <%= link_to 'Back', beans_path, class: "text-muted" %>
+
+      </div>
+    </div>
+  </div>
 </div>

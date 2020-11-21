@@ -1,46 +1,51 @@
- <div class="view" style="background-image: url('/assets/bean_background.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-   <div class="col-md-4 mx-auto">
-     <br><br><br>
-     <div class="card">
-       <div class="card-body">
-         <div class="text-center">
+<div class="view" style="background-image: url('/assets/bean_background.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+  <div class="col-md-4 mx-auto">
+    <br><br><br>
+    <div class="card">
+      <div class="card-body">
+        <div class="text-center">
 
-           <%= image_tag "bean_logo.png", height:"100", width: "100" %>
-           <h3 class="text-white">
-             Sign in</h3>
-           <hr class="hr-light">
-         </div>
-         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-         <div class="md-form">
-           <%= f.label :email %>
-           <%= f.email_field :email, autofocus: true, autocomplete: "email",  class: "form-control" %>
-         </div>
-         <br>
-         <div class="md-form">
-           <%= f.label :password %>
-           <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-         </div>
+          <%= image_tag "bean_logo.png", height:"100", width: "100" %>
+          <h3 class="text-white">Sign in</h3>
+          <hr class="hr-light">
+        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        
+        <div class="form-group input-material">
+          <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+          <%= f.label :email, for: "email-field" %>
+        </div>
 
-         <% if devise_mapping.rememberable? %>
-         <div class="md-form">
-           <%= f.check_box :remember_me %>
-           <%= f.label :remember_me %>
-         </div>
-         <% end %>
+        <div class="form-group input-material">
 
-         <div class="md-form">
-           <%= f.submit "Log in", class: "btn btn-outline-light" %>
-         </div>
+          <%= f.password_field :password, autocomplete: "current-password", for: "password-field", id: "password-field", class: "form-control" %>
+          <%= f.label :password %>
+        </div>
 
-         <% end %>
-         <br>
-         <div class="text-light">
-           <small>
-             <%= render "roasters/shared/links" %>
-           </small>
-         </div>
-       </div>
-     </div>
+        <%
+=begin%>
+ <% if devise_mapping.rememberable? %>
+        <div class="md-form">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+        <% end %> 
+<%
+=end%>
+<br>
+        <div class="md-form">
+          <%= f.submit "Log in", class: "btn btn-outline-light" %>
+        </div>
 
-   </div>
- </div>
+        <% end %>
+        <br>
+        <div class="text-light">
+          <small>
+            <%= render "roasters/shared/links" %>
+          </small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

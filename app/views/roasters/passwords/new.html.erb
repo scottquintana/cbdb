@@ -11,9 +11,10 @@
            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
            <%= render "devise/shared/error_messages", resource: resource %>
 
-           <div class="md-form">
-             <%= f.label :email %><br />
-             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-sm" %>
+           <div class="form-group input-material">
+             
+             <%= f.email_field :email, autofocus: false, autocomplete: "email", class: "form-control" %>
+             <%= f.label :email %>
            </div>
           <br>
            <div class="md-form">
