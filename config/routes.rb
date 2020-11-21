@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :roasters
   resources :beans#, path: '/roasters/beans'
  
+  root 'roasters#index'
   namespace :api do
     namespace :v1 do
       resources :sessions, only: [:create, :destroy]

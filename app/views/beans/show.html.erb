@@ -1,19 +1,34 @@
+<div class="view" style="background-image: url('/assets/bean_background.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+  <div class="col-md-4 mx-auto">
+    <br><br><br>
+    <div class="card">
+      <div class="card-body text-white">
+        <h5 class="card-title text-center"><%= @bean.name %></h5>
+        <div class="text-center">
+        <% if @bean.status == 'active' %>
+        <span class="badge badge-success">
+        <% elsif @bean.status == 'inactive' %>
+        <span class="badge badge-secondary">
+        <% elsif @bean.status == 'pending' %>
+        <span class="badge badge-warning">
+        <% end %>
+      <%= @bean.status %></td>
+      </span>
+        </div>
+        <hr class="hr-light">
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><%= @bean.name %><small> [<%= @bean.status %>]</small></h5>
-    
-    <p class="card-text">
-    <%= @bean.bean_profile.description %>
-    </p>
-    <li><%= @bean.bean_profile.region %>
-    <li><%= @bean.bean_profile.altitude %>
-    <li><%= @bean.bean_profile.processing %>
-    <li><%= @bean.bean_profile.notes %>
-    <li><%= @bean.bean_profile.roast_level %>
-    <li><%= @bean.bean_profile.altitude %>
-    
-    <%= link_to 'Edit', edit_bean_path(@bean) %>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
+        <p class="card-text">
+          <%= @bean.bean_profile.description %>
+        </p>
+        <li><%= @bean.bean_profile.region %>
+        <li><%= @bean.bean_profile.altitude %>
+        <li><%= @bean.bean_profile.processing %>
+        <li><%= @bean.bean_profile.notes %>
+        <li><%= @bean.bean_profile.roast_level %>
+        <li><%= @bean.bean_profile.altitude %>
+         <hr class="hr-light">
+         <div class="text-center">
+          <%= link_to 'Edit', edit_bean_path(@bean), class: "text-white" %> | <%= link_to 'Bean List', beans_path, class: "text-white" %>
+          </div>
+      </div>
+    </div>

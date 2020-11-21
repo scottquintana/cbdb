@@ -1,26 +1,51 @@
-<h2>Log in</h2>
+<div class="view" style="background-image: url('/assets/bean_background.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+  <div class="col-md-4 mx-auto">
+    <br><br><br>
+    <div class="card">
+      <div class="card-body">
+        <div class="text-center">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+          <%= image_tag "bean_logo.png", height:"100", width: "100" %>
+          <h3 class="text-white">Sign in</h3>
+          <hr class="hr-light">
+        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        
+        <div class="form-group input-material">
+          <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+          <%= f.label :email, for: "email-field" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <div class="form-group input-material">
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <%= f.password_field :password, autocomplete: "current-password", for: "password-field", id: "password-field", class: "form-control" %>
+          <%= f.label :password %>
+        </div>
+
+        <%
+=begin%>
+ <% if devise_mapping.rememberable? %>
+        <div class="md-form">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+        <% end %> 
+<%
+=end%>
+<br>
+        <div class="md-form">
+          <%= f.submit "Log in", class: "btn btn-outline-light" %>
+        </div>
+
+        <% end %>
+        <br>
+        <div class="text-light">
+          <small>
+            <%= render "roasters/shared/links" %>
+          </small>
+        </div>
+      </div>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "roasters/shared/links" %>
+</div>
